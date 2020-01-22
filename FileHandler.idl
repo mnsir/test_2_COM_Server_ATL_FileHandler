@@ -1,0 +1,52 @@
+﻿// FileHandler.idl: источник языка IDL для FileHandler
+//
+
+// Этот файл будет обработан средством MIDL для
+// создание библиотеки типов ($handlersafeidlname$.tlb) и кода маршалирования.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(f8de2842-0378-4605-b3db-4ac1b22ac9c4),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ISorter : IDispatch
+{
+	[id(1)] HRESULT SetInputFile([in] BSTR str);
+	[id(2)] HRESULT SetOutputFile([in] BSTR str);
+	[id(3)] HRESULT SetIncrease();
+	[id(4)] HRESULT SetDecrease();
+	[id(5)] HRESULT Start();
+	//[id(6)] HRESULT Abort();
+	[id(6)] HRESULT SetAbortPointer([in, out] VARIANT_BOOL* pAbort);
+};
+[
+	uuid(ba5b793a-7a1e-4faa-9432-181415ef7ec7),
+	version(1.0),
+]
+library FileHandlerLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(ff461761-c77b-4bd5-bff3-8597eff83846)
+	]
+	dispinterface _ISorterEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(95589923-e495-4b40-b42c-08aff79a4953)
+	]
+	coclass Sorter
+	{
+		[default] interface ISorter;
+		[default, source] dispinterface _ISorterEvents;
+	};
+};
+
+import "shobjidl.idl";
