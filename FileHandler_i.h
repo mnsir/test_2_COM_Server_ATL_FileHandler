@@ -105,10 +105,8 @@ EXTERN_C const IID IID_ISorter;
         
         virtual /* [id] */ HRESULT STDMETHODCALLTYPE SetDecrease( void) = 0;
         
-        virtual /* [id] */ HRESULT STDMETHODCALLTYPE Start( void) = 0;
-        
-        virtual /* [id] */ HRESULT STDMETHODCALLTYPE SetAbortPointer( 
-            /* [out][in] */ VARIANT_BOOL *pAbort) = 0;
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE Start( 
+            /* [in] */ SHORT *pAbort) = 0;
         
     };
     
@@ -183,11 +181,8 @@ EXTERN_C const IID IID_ISorter;
             ISorter * This);
         
         /* [id] */ HRESULT ( STDMETHODCALLTYPE *Start )( 
-            ISorter * This);
-        
-        /* [id] */ HRESULT ( STDMETHODCALLTYPE *SetAbortPointer )( 
             ISorter * This,
-            /* [out][in] */ VARIANT_BOOL *pAbort);
+            /* [in] */ SHORT *pAbort);
         
         END_INTERFACE
     } ISorterVtbl;
@@ -237,11 +232,8 @@ EXTERN_C const IID IID_ISorter;
 #define ISorter_SetDecrease(This)	\
     ( (This)->lpVtbl -> SetDecrease(This) ) 
 
-#define ISorter_Start(This)	\
-    ( (This)->lpVtbl -> Start(This) ) 
-
-#define ISorter_SetAbortPointer(This,pAbort)	\
-    ( (This)->lpVtbl -> SetAbortPointer(This,pAbort) ) 
+#define ISorter_Start(This,pAbort)	\
+    ( (This)->lpVtbl -> Start(This,pAbort) ) 
 
 #endif /* COBJMACROS */
 

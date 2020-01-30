@@ -20,9 +20,9 @@ interface ISorter : IDispatch
 	[id(2)] HRESULT SetOutputFile([in] BSTR str);
 	[id(3)] HRESULT SetIncrease();
 	[id(4)] HRESULT SetDecrease();
-	[id(5)] HRESULT Start();
+	[id(5)] HRESULT Start([in] SHORT* pAbort);
 	//[id(6)] HRESULT Abort();
-	[id(6)] HRESULT SetAbortPointer([in, out] VARIANT_BOOL* pAbort);
+	//[id(6)] HRESULT SetAbortPointer([in] BOOL* pAbort);
 };
 [
 	uuid(ba5b793a-7a1e-4faa-9432-181415ef7ec7),
